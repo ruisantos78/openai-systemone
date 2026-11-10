@@ -1,24 +1,67 @@
 # OpenAI.SystemOne
 
-Biblioteca .NET para chamar um endpoint compatível com System One e obter respostas a perguntas estruturadas sobre um estado partilhado.
-
-## Requisitos
-
-- .NET 10 SDK (o projeto também declara um target para .NET 11).
-- Um endpoint System One acessível pela aplicação.
+Cliente .NET para a API System One, com integração ao `OpenAIClient` e ao hosting do .NET Aspire. Envie um estado e um conjunto de perguntas nomeadas para receber respostas de escolha, sim/não (noul) ou pontuação.
 
 ## Instalação
 
-Adicione o projeto à sua solução:
+Instale o pacote NuGet no projeto da aplicação:
 
 ```bash
-dotnet add reference caminho/para/OpenAI.SystemOne.csproj
+dotnet add package OpenAI.SystemOne
 ```
-O projeto usa os pacotes `OpenAI` e `Aspire.OpenAI`, definidos no ficheiro `.csproj`.
 
-## Utilização
+O pacote suporta .NET 10 e .NET 11 e depende de `OpenAI` e `Aspire.OpenAI`.
 
-Crie o cliente com o nome do modelo e o endereço base do serviço. A chave API é opcional:
+## Integração com .NET Aspire
+
+Registe um cliente OpenAI com a chave `decision` no AppHost e encadeie `.AddSystemOneClient()`:
+
+```csharp
+var decision = builder.AddKeyedOpenAIClient("decision")
+    .AddSystemOneClient();
+```
+
+Configure a connection string `decision` com as definições de endpoint, credenciais e modelo suportadas por `Aspire.OpenAI`. A extensão usa o `OpenAIClient` registado para essa chave e regista um `ISystemOneClient` com a mesma chave. O modelo é lido de `Model=` ou `Deployment=` na connection string. Também pode informá-lo explicitamente:
+
+```csharp
+builder.AddKeyedOpenAIClient("decision")
+    .AddSystemOneClient(model: "meu-modelo");
+```
+
+No serviço da aplicação, injete o cliente com a mesma chave:
+
+```csharp
+using OpenAI.SystemOne;
+using Microsoft.Extensions.DependencyInjection;
+
+public sealed class DecisionService(
+    [FromKeyedServices("decision")] ISystemOneClient client)
+{
+    public Task<SystemOneResponse> DecideAsync(CancellationToken cancellationToken) =>
+        client.GenerateAsync(
+            state: new { text = "A proposta cumpre os critérios?" },
+            questions: new Dictionary<string, SystemOneQuestion>
+            {
+                ["approved"] = new SystemOneNoulQuestion
+                {
+                    Instructions = System.Text.Json.Nodes.JsonValue.Create(
+                        "Determine se a proposta deve ser aprovada."),
+                    Criteria = new SystemOneNoulCriteria
+                    {
+                        Yes = "Cumpre os critérios definidos.",
+                        No = "Não cumpre os critérios definidos."
+                    }
+                }
+            },
+            cancellationToken: cancellationToken);
+}
+```
+
+A extensão também oferece `AddKeyedSystemOneClient` para escolher uma chave de cliente System One diferente da chave do `OpenAIClient`.
+
+## Uso sem Aspire
+
+Também pode criar o cliente diretamente:
 
 ```csharp
 using OpenAI.SystemOne;
@@ -28,25 +71,29 @@ using var client = new SystemOneClient(
     endpoint: new Uri("http://localhost:11434"),
     apiKey: "chave-opcional");
 
-var questions = new Dictionary<string, SystemOneQuestion>
-{
-    // Configure aqui as perguntas suportadas pelo serviço.
-};
-
 SystemOneResponse response = await client.GenerateAsync(
     state: new { text = "Conteúdo a analisar" },
-    questions: questions,
+    questions: new Dictionary<string, SystemOneQuestion>
+    {
+        ["category"] = new SystemOneChoiceQuestion
+        {
+            Instructions = System.Text.Json.Nodes.JsonValue.Create("Escolha a categoria mais adequada."),
+            Criteria = new Dictionary<string, string?>
+            {
+                ["support"] = "Pedido de suporte",
+                ["sales"] = "Pedido comercial"
+            }
+        }
+    },
     cancellationToken: cancellationToken);
 ```
 
-O cliente envia um `POST` para `v1/systemone` (acrescentado ao endereço base, caso ainda não esteja presente). Os tipos `SystemOneQuestion`, `SystemOneOptions` e `SystemOneResponse` descrevem as perguntas, opções e resposta. `GenerateAsync` aceita também um estado como texto ou objeto serializável.
+O cliente envia um `POST` para `v1/systemone`, acrescentado ao endereço base se ainda não estiver presente. `GenerateAsync` aceita texto ou qualquer objeto serializável como estado. Use `SystemOneOptions` para enviar parâmetros adicionais, imagens ou a opção `KeepAlive`.
 
-## Aspire
+## Tipos de pergunta
 
-O projeto inclui extensões de hosting para integrar o cliente com `Aspire.OpenAI`. Consulte `Hosting/AspireOpenAIClientBuilderSystemOneExtensions.cs` para as opções de configuração disponíveis.
+- `SystemOneChoiceQuestion`: escolhe um item entre critérios nomeados.
+- `SystemOneNoulQuestion`: produz uma resposta sim/não.
+- `SystemOneScoreQuestion`: pontua o estado segundo uma escala de critérios ordenada.
 
-## Compilação
-
-```bash
-dotnet build OpenAI.SystemOne.slnx
-```
+As respostas correspondentes são `SystemOneChoiceAnswer`, `SystemOneNoulAnswer` e `SystemOneScoreAnswer`, acessíveis em `SystemOneResponse.Answers` pelo nome da pergunta.
