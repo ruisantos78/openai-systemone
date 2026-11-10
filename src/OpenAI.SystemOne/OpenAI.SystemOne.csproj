@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net10.0;net11.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>OpenAI.SystemOne</RootNamespace>
+        <NoWarn>$(NoWarn);OPENAI001</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OpenAI" Version="2.15.0" />
+        <PackageReference Include="Aspire.OpenAI" Version="13.6.4-preview.1.26523.11" />
+    </ItemGroup>
+
+</Project>
