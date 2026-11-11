@@ -36,4 +36,11 @@
         <None Include="../../README.md" Pack="true" PackagePath="/" />
     </ItemGroup>
 
+    <Target Name="GenerateDocs" AfterTargets="Build" Condition="'$(DOCS_GENERATION)' != '1'">
+        <Exec Command="dotnet run --file DocsDump.cs -- &quot;$(MSBuildThisFileDirectory)$(OutputPath)$(AssemblyName).xml&quot; &quot;$(MSBuildThisFileDirectory)../../docs/data&quot;"
+              WorkingDirectory="$(MSBuildThisFileDirectory)../../scripts"
+              EnvironmentVariables="DOCS_GENERATION=1"
+              StandardOutputImportance="Low" />
+    </Target>
+
 </Project>

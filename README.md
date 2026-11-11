@@ -3,6 +3,9 @@
 [![NuGet](https://img.shields.io/nuget/v/OpenAI.SystemOne.svg)](https://www.nuget.org/packages/OpenAI.SystemOne/)
 [![.NET](https://img.shields.io/badge/.NET-11.0-purple.svg)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Documentation](https://img.shields.io/badge/docs-online-purple.svg)](https://ruisantos78.github.io/openai-systemone/)
+
+Full API documentation: <https://ruisantos78.github.io/openai-systemone/>
 
 A modern .NET 11 client for the System One API, with integration with `OpenAIClient` and .NET Aspire hosting. Send a state and a set of named questions to receive choice, yes/no (noul), or score answers.
 
