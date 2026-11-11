@@ -1,6 +1,23 @@
 # OpenAI.SystemOne
 
-.NET client for the System One API, with integration with `OpenAIClient` and .NET Aspire hosting. Send a state and a set of named questions to receive choice, yes/no (noul), or score answers.
+[![NuGet](https://img.shields.io/nuget/v/OpenAI.SystemOne.svg)](https://www.nuget.org/packages/OpenAI.SystemOne/)
+[![.NET](https://img.shields.io/badge/.NET-11.0-purple.svg)](https://dotnet.microsoft.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+A modern .NET 11 client for the System One API, with integration with `OpenAIClient` and .NET Aspire hosting. Send a state and a set of named questions to receive choice, yes/no (noul), or score answers.
+
+---
+
+## Key Features
+
+- 🎯 **Three question types**: `SystemOneChoiceQuestion` (pick one of named criteria), `SystemOneNoulQuestion` (yes/no answer), and `SystemOneScoreQuestion` (score on an ordered scale).
+- 🧩 **Flexible state**: send text, `JsonObject`, `JsonArray`, a `string[]`, or any serializable object as the shared state.
+- ⚙️ **Rich options**: `KeepAlive` (durations or seconds), base64 `Images`, and provider-specific `AdditionalProperties` merged into the request body.
+- 🔗 **OpenAI & Aspire integration**: reuse an `OpenAIClient` pipeline or register `ISystemOneClient` in .NET Aspire via `AddSystemOneClient()`.
+- 📊 **Typed answers**: polymorphic `SystemOneChoiceAnswer`, `SystemOneNoulAnswer`, and `SystemOneScoreAnswer` with probabilities, confidence, legend, and token usage.
+- ⚠️ **Consistent errors**: all HTTP and parsing failures are surfaced as `SystemOneException` with the status code and endpoint message.
+
+---
 
 ## Installation
 
@@ -12,7 +29,11 @@ dotnet add package OpenAI.SystemOne
 
 The package targets .NET 11 and depends on `OpenAI` and `Aspire.OpenAI`.
 
-## .NET Aspire integration
+---
+
+## Quick Start & Usage
+
+### 1. .NET Aspire integration
 
 Register an OpenAI client with the `decision` key in the AppHost and chain `.AddSystemOneClient()`:
 
@@ -65,7 +86,9 @@ builder.AddKeyedOpenAIClient("decision")
 
 The `OpenAIClient` key is used to resolve the OpenAI client; `ISystemOneClient` is registered under `systemone`.
 
-## Usage without Aspire
+---
+
+### 2. Creating a client without Aspire
 
 You can also create the client directly:
 
@@ -96,7 +119,18 @@ SystemOneResponse response = await client.DecideAsync(
 
 The client sends a `POST` to `v1/systemone`, appended to the endpoint unless the address already ends with that path (an address ending in `v1` is normalized as well).
 
-### State
+You can also create a System One client from an existing `OpenAIClient`, reusing its pipeline and endpoint:
+
+```csharp
+using OpenAI;
+using OpenAI.SystemOne;
+
+ISystemOneClient client = openAiClient.GetSystemOneClient("my-model");
+```
+
+---
+
+### 3. State
 
 `DecideAsync` accepts a `SystemOneState`, which is implicitly created from:
 
@@ -105,7 +139,9 @@ The client sends a `POST` to `v1/systemone`, appended to the endpoint unless the
 - A `string[]` (converted to a JSON array of strings)
 - Any serializable object via `SystemOneState.FromObject(value)`
 
-### Options
+---
+
+### 4. Options
 
 Use `SystemOneOptions` to send additional parameters, images, or the `KeepAlive` option:
 
@@ -123,47 +159,9 @@ var options = new SystemOneOptions
 
 `KeepAlive` specifies how long the model stays loaded after the request and is serialized as `keep_alive`. `Images` is serialized as `images`. `AdditionalProperties` merges provider-specific properties into the request body at the root level.
 
-### Response
+---
 
-`DecideAsync` returns a `SystemOneResponse` with `Model`, `Answers` keyed by question name, and `Usage`. Each answer is deserialized according to the question type, so cast it to the matching answer class to read its data:
-
-```csharp
-SystemOneResponse response = await client.DecideAsync(state, questions);
-
-// Choice answer: the selected option, its probabilities, and the model's confidence.
-var category = (SystemOneChoiceAnswer)response.Answers["category"];
-Console.WriteLine(category.Choice);              // "support"
-Console.WriteLine(category.Confidence);          // 0.8906
-Console.WriteLine(category.Probabilities["bug"]); // 0.9781
-
-// Noul answer: the yes/no answer as a numeric value.
-var urgent = (SystemOneNoulAnswer)response.Answers["urgent"];
-Console.WriteLine(urgent.Noul);                  // 0.959
-
-// Score answer: the score, the legend describing each level, and probabilities.
-var urgency = (SystemOneScoreAnswer)response.Answers["urgency"];
-Console.WriteLine(urgency.Score);                // 0.8308
-Console.WriteLine(urgency.Legend["2"]);          // "Immediate: a critical service is unavailable"
-
-// Token usage of the generation operation.
-Console.WriteLine(response.Usage.InputTokens);   // 174
-Console.WriteLine(response.Usage.OutputTokens);  // 1
-```
-
-`response.Model` contains the model that generated the response, as reported by the endpoint.
-
-### Reusing an OpenAIClient
-
-You can also create a System One client from an existing `OpenAIClient`, reusing its pipeline and endpoint:
-
-```csharp
-using OpenAI;
-using OpenAI.SystemOne;
-
-ISystemOneClient client = openAiClient.GetSystemOneClient("my-model");
-```
-
-## Question types
+### 5. Question types
 
 - `SystemOneChoiceQuestion`: selects one item from named criteria (2 to 255 criteria).
 - `SystemOneNoulQuestion`: produces a yes/no answer. The criteria are optional and describe the `false` and `true` outcomes.
@@ -204,14 +202,45 @@ var questions = new Dictionary<string, SystemOneQuestion>
 };
 ```
 
-The corresponding answers are `SystemOneChoiceAnswer`, `SystemOneNoulAnswer`, and `SystemOneScoreAnswer`, accessible in `SystemOneResponse.Answers` by question name:
+---
 
-- `SystemOneChoiceAnswer`: `Choice`, `Probabilities`, and `Confidence`.
-- `SystemOneNoulAnswer`: `Noul` (the yes/no answer as a numeric value).
-- `SystemOneScoreAnswer`: `Score`, `Legend`, `Probabilities`, and `Confidence`.
+### 6. Handling the response
 
-`SystemOneResponse` also exposes `Model` and `Usage` (`InputTokens` and `OutputTokens`).
+`DecideAsync` returns a `SystemOneResponse` with `Model`, `Answers` keyed by question name, and `Usage`. Each answer is deserialized according to the question type, so cast it to the matching answer class to read its data:
+
+```csharp
+SystemOneResponse response = await client.DecideAsync(state, questions);
+
+// Choice answer: the selected option, its probabilities, and the model's confidence.
+var category = (SystemOneChoiceAnswer)response.Answers["category"];
+Console.WriteLine(category.Choice);              // "support"
+Console.WriteLine(category.Confidence);          // 0.8906
+Console.WriteLine(category.Probabilities["bug"]); // 0.9781
+
+// Noul answer: the yes/no answer as a numeric value.
+var urgent = (SystemOneNoulAnswer)response.Answers["urgent"];
+Console.WriteLine(urgent.Noul);                  // 0.959
+
+// Score answer: the score, the legend describing each level, and probabilities.
+var urgency = (SystemOneScoreAnswer)response.Answers["urgency"];
+Console.WriteLine(urgency.Score);                // 0.8308
+Console.WriteLine(urgency.Legend["2"]);          // "Immediate: a critical service is unavailable"
+
+// Token usage of the generation operation.
+Console.WriteLine(response.Usage.InputTokens);   // 174
+Console.WriteLine(response.Usage.OutputTokens);  // 1
+```
+
+`response.Model` contains the model that generated the response, as reported by the endpoint.
+
+---
 
 ## Error handling
 
-Failed requests throw a `SystemOneException` carrying the HTTP status code and the error message returned by the endpoint.
+Failed requests throw a `SystemOneException` carrying the HTTP status code and the error message returned by the endpoint. Responses with an empty or unparsable body are surfaced the same way.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
