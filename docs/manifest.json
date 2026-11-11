@@ -365,7 +365,7 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html/index.html"
+          "relative_path": "index.html"
         }
       },
       "version": ""

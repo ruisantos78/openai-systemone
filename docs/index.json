@@ -119,8 +119,8 @@
     "title": "Namespace OpenAI | OpenAI.SystemOne API Documentation",
     "summary": "Namespace OpenAI Classes OpenAiClientSystemOneExtensions Provides extension methods for creating System One clients from OpenAI clients."
   },
-  "index.html/index.html": {
-    "href": "index.html/index.html",
+  "index.html": {
+    "href": "index.html",
     "title": "API Reference | OpenAI.SystemOne API Documentation",
     "summary": "API Reference Welcome to the OpenAI.SystemOne API documentation. Below are the core namespaces and classes provided by the library. Namespaces OpenAI.SystemOne: Core client (SystemOneClient), questions (SystemOneChoiceQuestion, SystemOneNoulQuestion, SystemOneScoreQuestion), answers, options, and state/content abstractions. OpenAI: Extension methods for OpenAIClient (GetSystemOneClient). Microsoft.Extensions.Hosting: .NET Aspire integration extensions (AddSystemOneClient, AddKeyedSystemOneClient)."
   }
