@@ -7,6 +7,7 @@ using OpenAI.SystemOne;
 
 namespace Microsoft.Extensions.Hosting;
 
+/// <summary>Provides extension methods for configuring System One clients with Aspire.</summary>
 public static class AspireOpenAiClientBuilderSystemOneExtensions
 {
     extension(AspireOpenAIClientBuilder builder)

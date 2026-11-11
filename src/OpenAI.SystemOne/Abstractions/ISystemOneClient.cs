@@ -10,13 +10,13 @@ public interface ISystemOneClient : IDisposable
     string Model { get; }
 
     /// <summary>Answers the given questions about the given state.</summary>
-    /// <param name="state">The shared state that all questions are asked about (text or serializable object).</param>
+    /// <param name="state">The shared state that all questions are asked about (text, object, or array).</param>
     /// <param name="questions">The named questions about the shared state.</param>
     /// <param name="options">Optional parameters for generation.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task containing the <see cref="SystemOneResponse"/>.</returns>
     Task<SystemOneResponse> DecideAsync(
-        object state,
+        SystemOneState state,
         IDictionary<string, SystemOneQuestion> questions,
         SystemOneOptions? options = null,
         CancellationToken cancellationToken = default);

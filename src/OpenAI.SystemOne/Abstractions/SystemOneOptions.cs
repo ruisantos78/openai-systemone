@@ -1,12 +1,10 @@
-using System.Text.Json.Nodes;
-
 namespace OpenAI.SystemOne;
 
-/// <summary>Provides options for a <see cref="ISystemOneClient"/> generation operation.</summary>
+/// <summary>Represents parameters for a System One decision request.</summary>
 public class SystemOneOptions
 {
     /// <summary>Gets or sets the duration for which the model should remain loaded.</summary>
-    public JsonNode? KeepAlive { get; set; }
+    public SystemOneKeepAlive? KeepAlive { get; set; }
 
     /// <summary>Gets or sets the images to include in the generation request.</summary>
     public IList<string>? Images { get; set; }

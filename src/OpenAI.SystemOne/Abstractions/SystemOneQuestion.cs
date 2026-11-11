@@ -1,4 +1,3 @@
-using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace OpenAI.SystemOne;
@@ -21,7 +20,7 @@ public abstract class SystemOneQuestion
     /// Gets or sets the instructions shown to the model for this question.
     /// </summary>
     [JsonPropertyName("instructions")]
-    public required JsonNode Instructions { get; set; }
+    public required SystemOneContent Instructions { get; set; }
 }
 
 /// <summary>A question that picks one option out of a set of named criteria.</summary>

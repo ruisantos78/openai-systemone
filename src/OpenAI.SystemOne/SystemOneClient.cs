@@ -72,18 +72,17 @@ public sealed class SystemOneClient : ISystemOneClient
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task containing the System One response.</returns>
     public async Task<SystemOneResponse> DecideAsync(
-        object state,
+        SystemOneState state,
         IDictionary<string, SystemOneQuestion> questions,
         SystemOneOptions? options = null,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(questions);
 
         WireSystemOneRequest request = new()
         {
             Model = Model,
-            State = state as JsonNode ?? JsonSerializer.SerializeToNode(state)!,
+            State = state,
             Questions = questions,
             KeepAlive = options?.KeepAlive,
             Images = options?.Images,
@@ -151,11 +150,18 @@ public sealed class SystemOneClient : ISystemOneClient
             throw new SystemOneException(response.Status, "The System One endpoint returned no content.");
         }
 
-        var result = await JsonSerializer
-            .DeserializeAsync(stream, SystemOneJsonContext.Default.SystemOneResponse, cancellationToken)
-            .ConfigureAwait(false);
+        try
+        {
+            var result = await JsonSerializer
+                .DeserializeAsync(stream, SystemOneJsonContext.Default.SystemOneResponse, cancellationToken)
+                .ConfigureAwait(false);
 
-        return result ?? throw new SystemOneException(response.Status, "The System One endpoint returned a response that could not be parsed.");
+            return result ?? throw new SystemOneException(response.Status, "The System One endpoint returned a response that could not be parsed.");
+        }
+        catch (JsonException ex)
+        {
+            throw new SystemOneException(response.Status, "The System One endpoint returned a response that could not be parsed.", ex);
+        }
     }
 
     /// <summary>Releases resources owned by this client.</summary>
