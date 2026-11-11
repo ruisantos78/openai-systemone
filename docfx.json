@@ -1,0 +1,44 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "src/OpenAI.SystemOne/OpenAI.SystemOne.csproj"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "README.md"
+        ],
+        "dest": "."
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "src/OpenAI.SystemOne/icon.png"
+        ]
+      }
+    ],
+    "globalMetadata": {
+      "_appName": "OpenAI.SystemOne",
+      "_appTitle": "OpenAI.SystemOne API Documentation",
+      "_enableSearch": true
+    },
+    "dest": "docs",
+    "force": true
+  }
+}

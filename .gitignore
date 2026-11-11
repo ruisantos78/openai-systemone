@@ -3,6 +3,7 @@ obj/
 /packages/
 riderModule.iml
 *.DotSettings.user
+api/
 /_ReSharper.Caches/
 
 skills/

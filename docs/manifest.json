@@ -1,0 +1,389 @@
+{
+  "docfx_version": "2.81.0+ba844df625370a6bd7c1ecab0d0ec4d1d9128ac4",
+  "source_base_path": "/Volumes/Users/ruisantos/Projects/nuget/openai-systemone",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.Hosting.AspireOpenAiClientBuilderSystemOneExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.Hosting.AspireOpenAiClientBuilderSystemOneExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Microsoft.Extensions.Hosting.AspireOpenAiClientBuilderSystemOneExtensions",
+      "Summary": "<p sourcefile=\"api/Microsoft.Extensions.Hosting.AspireOpenAiClientBuilderSystemOneExtensions.yml\" sourcestartlinenumber=\"1\">Provides extension methods for configuring System One clients with Aspire.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.Hosting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.Hosting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Microsoft.Extensions.Hosting",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.OpenAiClientSystemOneExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.OpenAiClientSystemOneExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.OpenAiClientSystemOneExtensions",
+      "Summary": "<p sourcefile=\"api/OpenAI.OpenAiClientSystemOneExtensions.yml\" sourcestartlinenumber=\"1\">Provides extension methods for creating System One clients from OpenAI clients.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.ISystemOneClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.ISystemOneClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.ISystemOneClient",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.ISystemOneClient.yml\" sourcestartlinenumber=\"1\">Provides an abstraction for a client that answers choice, yes/no (noul), and scoring questions\nabout a shared state using a System One endpoint.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneAnswer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneAnswer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneAnswer",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneAnswer.yml\" sourcestartlinenumber=\"1\">The answer to a single named question.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneChoiceAnswer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneChoiceAnswer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneChoiceAnswer",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneChoiceAnswer.yml\" sourcestartlinenumber=\"1\">An answer that selects one of the named criteria from a choice question.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneChoiceQuestion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneChoiceQuestion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneChoiceQuestion",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneChoiceQuestion.yml\" sourcestartlinenumber=\"1\">A question that picks one option out of a set of named criteria.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneClient",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneClient.yml\" sourcestartlinenumber=\"1\">Provides access to a System One endpoint.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneClientMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneClientMetadata.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneClientMetadata",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneClientMetadata.yml\" sourcestartlinenumber=\"1\">Describes an <xref href=\"OpenAI.SystemOne.ISystemOneClient\" data-throw-if-not-resolved=\"false\"></xref>, for use in logging and diagnostics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneContent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneContent",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneContent.yml\" sourcestartlinenumber=\"1\">Content representing a nonempty string, or an object or array serialized as JSON text.\nUsed for question instructions and shared state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneException",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneException.yml\" sourcestartlinenumber=\"1\">Represents an error returned by a System One endpoint or a failure while invoking it.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneKeepAlive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneKeepAlive.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneKeepAlive",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneKeepAlive.yml\" sourcestartlinenumber=\"1\">Specifies how long to keep the model loaded after a request, as a duration string (such as <code>5m</code>) or seconds.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneNoulAnswer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneNoulAnswer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneNoulAnswer",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneNoulAnswer.yml\" sourcestartlinenumber=\"1\">A yes/no (noul) answer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneNoulCriteria.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneNoulCriteria.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneNoulCriteria",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneNoulCriteria.yml\" sourcestartlinenumber=\"1\">Descriptions for the <code>false</code> and <code>true</code> outcomes of a <xref href=\"OpenAI.SystemOne.SystemOneNoulQuestion\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneNoulQuestion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneNoulQuestion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneNoulQuestion",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneNoulQuestion.yml\" sourcestartlinenumber=\"1\">A yes/no (noul) question.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneOptions",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneOptions.yml\" sourcestartlinenumber=\"1\">Represents parameters for a System One decision request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneQuestion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneQuestion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneQuestion",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneQuestion.yml\" sourcestartlinenumber=\"1\">A single named question asked in a System One request. Use <xref href=\"OpenAI.SystemOne.SystemOneChoiceQuestion\" data-throw-if-not-resolved=\"false\"></xref>,\n<xref href=\"OpenAI.SystemOne.SystemOneNoulQuestion\" data-throw-if-not-resolved=\"false\"></xref>, or <xref href=\"OpenAI.SystemOne.SystemOneScoreQuestion\" data-throw-if-not-resolved=\"false\"></xref> to create one.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneResponse.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneResponse",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneResponse.yml\" sourcestartlinenumber=\"1\">The response from a System One generation operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneScoreAnswer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneScoreAnswer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneScoreAnswer",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneScoreAnswer.yml\" sourcestartlinenumber=\"1\">An answer that scores the state on a scale defined by a score question.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneScoreQuestion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneScoreQuestion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneScoreQuestion",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneScoreQuestion.yml\" sourcestartlinenumber=\"1\">A question that scores the state on a scale defined by an ordered list of criteria.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneState",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneState.yml\" sourcestartlinenumber=\"1\">Represents the shared state that questions are asked about which can be text, an object, or an array.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.SystemOneUsage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.SystemOneUsage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne.SystemOneUsage",
+      "Summary": "<p sourcefile=\"api/OpenAI.SystemOne.SystemOneUsage.yml\" sourcestartlinenumber=\"1\">Describes token usage for a System One generation operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.SystemOne.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.SystemOne.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI.SystemOne",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenAI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenAI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "OpenAI",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "src/OpenAI.SystemOne/icon.png",
+      "output": {
+        "resource": {
+          "relative_path": "src/OpenAI.SystemOne/icon.png"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
