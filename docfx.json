@@ -18,6 +18,12 @@
           "api/**.yml",
           "toc.yml"
         ]
+      },
+      {
+        "files": [
+          "index.md"
+        ],
+        "dest": "index.html"
       }
     ],
     "resource": [
