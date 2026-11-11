@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="src\OpenAI.SystemOne\OpenAI.SystemOne.csproj" />
+  <Project Path="test/OpenAI.SystemOne.Test/OpenAI.SystemOne.Test.csproj" />
 </Solution>

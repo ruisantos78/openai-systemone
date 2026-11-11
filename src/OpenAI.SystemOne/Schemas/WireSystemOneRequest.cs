@@ -15,8 +15,10 @@ internal sealed class WireSystemOneRequest
     public IDictionary<string, SystemOneQuestion> Questions { get; set; } = new Dictionary<string, SystemOneQuestion>();
 
     [JsonPropertyName("keep_alive")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public JsonNode? KeepAlive { get; set; }
 
     [JsonPropertyName("images")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public IList<string>? Images { get; set; }
 }

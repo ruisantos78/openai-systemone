@@ -15,7 +15,7 @@ public interface ISystemOneClient : IDisposable
     /// <param name="options">Optional parameters for generation.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A task containing the <see cref="SystemOneResponse"/>.</returns>
-    Task<SystemOneResponse> GenerateAsync(
+    Task<SystemOneResponse> DecideAsync(
         object state,
         IDictionary<string, SystemOneQuestion> questions,
         SystemOneOptions? options = null,
