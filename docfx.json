@@ -37,6 +37,7 @@
     "globalMetadata": {
       "_appName": "OpenAI.SystemOne",
       "_appTitle": "OpenAI.SystemOne API Documentation",
+      "_appLogoPath": "src/OpenAI.SystemOne/icon.png",
       "_enableSearch": true
     },
     "dest": "docs",
